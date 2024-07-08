@@ -1,0 +1,93 @@
+{
+  "name": "@kam4ata/hajs",
+  "version": "3.0.0",
+  "description": "HAJS is a framework for building Node.js web applications.",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:kam4atka/hajs.git"
+  },
+  "keywords": [
+    "node.js",
+    "rest",
+    "api"
+  ],
+  "author": "kam4atka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kam4atka/hajs/issues"
+  },
+  "homepage": "https://github.com/kam4atka/hajs#readme",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "type": "module",
+  "exports": {
+    "./common": "./lib/packages/common/index.js",
+    "./core": "./lib/packages/core/index.js",
+    "./enum": "./lib/packages/enum/index.js",
+    "./type": "./lib/packages/type/index.js",
+    "./util": "./lib/packages/util/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "common": [
+        "./lib/types/packages/common/index.d.ts"
+      ],
+      "core": [
+        "./lib/types/packages/core/index.d.ts"
+      ],
+      "enum": [
+        "./lib/types/packages/enum/index.js"
+      ],
+      "type": [
+        "./lib/types/packages/type/index.js"
+      ],
+      "util": [
+        "./lib/types/packages/util/index.js"
+      ]
+    }
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./lib && rm -rf ./coverage",
+    "build": "npm run clean && npm run build:esm",
+    "build:esm": "tsc -p ./tsconfig.json",
+    "prepack": "npm run build",
+    "lint": "eslint src/ --ext .ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "spellcheck": "yaspeller --config ./node_modules/@htmlacademy/configs/yaspeller.json --dictionary ./dictionary.json ./docs/",
+    "eyo": "eyo -i \"docs/*.md\" && eyo -i \"readme.md\""
+  },
+  "dependencies": {
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.0",
+    "cron": "2.2.0",
+    "express": "4.18.2",
+    "express-async-handler": "1.2.0",
+    "http-status-codes": "2.2.0",
+    "inversify": "6.0.1",
+    "lowdb": "5.1.0",
+    "pino": "8.11.0",
+    "reflect-metadata": "0.1.13",
+    "tslib": "2.5.0"
+  },
+  "devDependencies": {
+    "@htmlacademy/configs": "3.1.1",
+    "@types/cron": "2.0.0",
+    "@types/express": "4.17.17",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@vitest/coverage-c8": "0.29.1",
+    "eslint": "8.35.0",
+    "eslint-config-htmlacademy": "9.0.0",
+    "eyo": "5.0.0",
+    "ts-node": "10.9.1",
+    "typescript": "4.9.5",
+    "vitest": "0.29.1",
+    "vitest-mock-express": "2.0.3",
+    "yaspeller": "7.2.1"
+  }
+}
